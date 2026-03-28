@@ -97,7 +97,7 @@
       opacity: 0.5;
     }
 
-    /* ── Blog link ── */
+    /* ── Posts link ── */
     .blog-link-wrap {
       max-width: 520px;
       width: 100%;
@@ -121,6 +121,62 @@
 
     .blog-link-wrap a:hover {
       opacity: 0.5;
+    }
+
+    /* ── Posts section ── */
+    .posts-section {
+      max-width: 520px;
+      width: 100%;
+      margin-top: 64px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.7s forwards;
+    }
+
+    .posts-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 20px;
+    }
+
+    .post-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 16px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .post-item:last-child {
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+    }
+
+    .post-title {
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--black);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.15s ease;
+    }
+
+    .post-title:hover {
+      opacity: 0.5;
+    }
+
+    .post-date {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* ── Footer ── */
@@ -189,15 +245,20 @@
     <p>Sanguine is an artificial intelligence company promoting safety in audio. We build robust, risk-driven authentication.</p>
     <p>Our research focuses on teaching AI to notice subtle patterns in real voices — like tiny instabilities and natural rhythms that are hard to copy.</p>
     <p>We're a team of former Afterpay &amp; Cash App risk experts based in San Francisco / Auckland.</p>
-    <p class="founders">Founders: <a href="https://www.linkedin.com/in/evanamoon/" target="_blank" rel="noopener">Evana Moon</a> &amp; <a href="mailto:bojan.janjic@sanguineai-incorporated.com">Bojan Janjic</a></p>
+    <p class="founders">Founders: <a href="https://www.linkedin.com/in/evanamoon/" target="_blank" rel="noopener">Evana Moon</a> &amp; <a href="/cdn-cgi/l/email-protection#b5d7dadfd4db9bdfd4dbdfdcd6f5c6d4dbd2c0dcdbd0d4dc98dcdbd6dac7c5dac7d4c1d0d19bd6dad8">Bojan Janjic</a></p>
   </div>
 
   <div class="blog-link-wrap">
-    <a href="/blog">blog</a>
+    <a href="/posts">posts</a>
+  </div>
+
+  <div class="posts-section">
+    <div class="posts-label">Posts</div>
+    <div class="post-item">
+      <a class="post-title" href="/posts/geometric-trajectory-matrix">Geometric Trajectory Matrix for Voice Modeling</a>
+      <span class="post-date">Apr 1, 2026</span>
+    </div>
   </div>
 
 
-  <div class="footer">San Francisco · Auckland</div>
-
-</body>
-</html>
+  <div c
