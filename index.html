@@ -97,13 +97,38 @@
       opacity: 0.5;
     }
 
+    /* ── Blog link ── */
+    .blog-link-wrap {
+      max-width: 520px;
+      width: 100%;
+      margin-top: 32px;
+      text-align: right;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.55s forwards;
+    }
+
+    .blog-link-wrap a {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
+      transition: opacity 0.15s ease;
+    }
+
+    .blog-link-wrap a:hover {
+      opacity: 0.5;
+    }
+
     /* ── Footer ── */
     .footer {
       margin-top: 72px;
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      opacity: 0.35;
       font-weight: 500;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.65s forwards;
@@ -115,9 +140,6 @@
         transform: translateY(0);
       }
     }
-
-    /* fix footer double opacity */
-    .footer { opacity: 0; }
   </style>
 </head>
 <body>
@@ -169,6 +191,11 @@
     <p>We're a team of former Afterpay &amp; Cash App risk experts based in San Francisco / Auckland.</p>
     <p class="founders">Founders: <a href="https://www.linkedin.com/in/evanamoon/" target="_blank" rel="noopener">Evana Moon</a> &amp; <a href="mailto:bojan.janjic@sanguineai-incorporated.com">Bojan Janjic</a></p>
   </div>
+
+  <div class="blog-link-wrap">
+    <a href="/blog">blog</a>
+  </div>
+
 
   <div class="footer">San Francisco · Auckland</div>
 
