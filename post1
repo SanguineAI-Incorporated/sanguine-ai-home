@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Geometric Trajectory Matrix for Voice Modeling</title>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+<style>
+  body { 
+    font-family: "Helvetica", Arial, sans-serif; 
+    line-height: 1.7; 
+    margin: 2em; 
+    color: #222; 
+    background-color: #FFF700; 
+  }
+  h1 { color: #000000; font-size: 2em; margin-bottom: 0.5em; }
+  h2 { color: #000000; margin-top: 2em; }
+  a { color: #1a0dab; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .tldr { background-color: #C5C6C7; padding: 1em; border-left: 4px solid #1a0dab; margin-bottom: 2em; }
+  p { margin-bottom: 1em; }
+  .figure { text-align:center; margin: 2em 0; }
+  .figure img { max-width:100%; height:auto; border:1px solid #ccc; padding:5px; }
+  .figure p { font-style:italic; margin-top:0.5em; }
+</style>
+</head>
+<body>
+
+<h1>Geometric Trajectory Matrix for Voice Modeling</h1>
+
+<div class="tldr">
+MFCCs, while historically central to audio representation, primarily encode short-window spectral features and discard higher-order temporal structure. We propose the geometric trajectory matrix, a representation that models speech as a trajectory through feature space, preserving sequential dynamics that may better support downstream inference of context and prediction of future utterances.
+</div>
+
+<p>At Sanguine, we’ve been developing a set of voice-driven capabilities for speaker verification and other identity-based tasks, inspired by audio intelligence systems such as Shazam.</p>
+
+<p>Walk into any room and sound is everywhere, but machines rarely hear it the way we do. Voices, footsteps, even the hum of electronics—they carry patterns that can tell you who’s speaking, what’s happening, and when it matters. Our lab is using Geometric Trajectory Matrices to help machines make sense of these patterns in real time.</p>
+
+<p>Traditional features like Mel-Frequency Cepstral Coefficients capture slices of sound in time. They’re snapshots—useful, but incomplete. Modern embedding models go further, but often compress entire utterances into a single vector, losing the temporal structure of speech.</p>
+
+<p>Geometric Trajectory Matrices take a different approach. We start by mapping audio into a low-dimensional trajectory:</p>
+
+<p>\[
+\mathbf{z}_1, \mathbf{z}_2, \dots, \mathbf{z}_T \in \mathbb{R}^k
+\]</p>
+
+<p>Each \(\mathbf{z}_t\) represents the voice at a moment in time. Together, they form a path through acoustic space—the vocal trajectory.</p>
+
+<p>Instead of only tracking local motion, we explicitly model the geometry of this trajectory by capturing relationships between all pairs of time steps.</p>
+
+<p>Distance geometry:</p>
+
+<p>\[
+D_{ij} = \|\mathbf{z}_i - \mathbf{z}_j\|
+\]</p>
+
+<p>This matrix encodes the global shape of the trajectory—how similar or different any two moments in time are.</p>
+
+<p>Inner-product structure:</p>
+
+<p>\[
+G_{ij} = \mathbf{z}_i^\top \mathbf{z}_j
+\]</p>
+
+<p>This captures angular relationships and correlations across time, revealing how the trajectory is oriented in space.</p>
+
+<p>Temporal dynamics:</p>
+
+<p>\[
+\Delta \mathbf{z}_t = \mathbf{z}_{t+1} - \mathbf{z}_t
+\]</p>
+
+<p>These local motion vectors describe how the voice evolves from frame to frame—capturing articulation patterns and speaking style.</p>
+
+<p>The vocal path is the journey of your articulators—the tongue, lips, jaw, and vocal cords—through acoustic space. Every frame in the matrix is a snapshot along that journey. The difference between frames tells you the local step. Geometric invariants, like curvature:</p>
+
+<p>\[
+\kappa_t = \frac{\|\Delta \mathbf{z}_t \times \Delta \mathbf{z}_{t+1}\|}{\|\Delta \mathbf{z}_t\|^3}
+\]</p>
+
+<p>or alignment between two trajectories:</p>
+
+<p>\[
+S(i,j) = \frac{\operatorname{Tr}(\mathbf{Z}_i^\top \mathbf{Z}_j)}{\|\mathbf{Z}_i\|_F \|\mathbf{Z}_j\|_F}
+\]</p>
+
+<p>give models a way to measure similarity and structure in a way that is both interpretable and robust.</p>
+
+<p>Together, these components form the Geometric Trajectory Matrix: a structured representation of both where the voice is and how it moves.</p>
+
+<h2>Visualizing PCA Trajectories</h2>
+
+<p>To make this concrete, we can construct a 3D trajectory from PCA-reduced features. Each axis corresponds to a group of principal components, capturing the main directions of variance. The trajectory moves through this space as time progresses, showing how the speaker’s vocal behavior evolves from the beginning to the end of the utterance.</p>
+
+<div class="figure">
+  <img src="pca_trajectory.png" alt="3D PCA Trajectory of Speaker">
+  <p>Figure: 3D PCA Trajectory showing how a speaker's vocal path evolves over time.</p>
+</div>
+
+<p>By examining the trajectory, patterns of motion—curves, twists, and transitions—become visible, providing insight into temporal dynamics that are not captured by static representations.</p>
+
+<h2>Building Foundations for What Comes Next</h2>
+
+<p>Today, most systems that rely on voice for identity reduce speech to static representations. These approaches perform well under controlled conditions, but often degrade in real-world settings where noise, variability, and temporal structure matter.</p>
+
+<p>This limitation shows up across voice authentication systems and autonomous agents—anywhere identity must be inferred under uncertainty. In warehouse robotics, for example, operator authentication often happens in noisy, fast-moving environments where reliability is critical. The issue is not just model capacity, but how the signal itself is represented. When temporal structure is compressed away, important information about consistency and evolution is lost.</p>
+
+<p>We think the problem is upstream. Not just in the models, but in the representation itself.</p>
+
+<p>Building on prior work in voice biometrics, we introduce a data construct we call the vocal path. Instead of collapsing time, it preserves it. Instead of summarizing, it traces. It captures how a voice moves—not just what it looks like.</p>
+
+<p>We believe this shift enables a range of high-impact applications, from operator authentication in warehouse robotics to persistent identity for agents operating in irreversible decision contexts.</p>
+
+<p>We’ve created a notebook that walks through building a simple Geometric Trajectory Matrix here: <a href="#">[link]</a>. Reach out to us at <a href="mailto:team@sanguineai.xyz">team@sanguineai.xyz</a> to learn more.</p>
+
+</body>
+</html>
