@@ -19,7 +19,7 @@
   h2 { color: #000000; margin-top: 2em; }
   a { color: #1a0dab; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .tldr { background-color: #C5C6C7; padding: 1em; border-left: 4px solid #1a0dab; margin-bottom: 2em; }
+  .tldr { background-color: #C5C6C7; padding: 1em; border-left: 4px solid #1a0dab; margin-bottom: 1em; }
   p { margin-bottom: 1em; }
   .figure { text-align:center; margin: 2em 0; }
   .figure img { max-width:100%; height:auto; border:1px solid #ccc; padding:5px; }
@@ -92,11 +92,11 @@ S(i,j) = \frac{\operatorname{Tr}(\mathbf{Z}_i^\top \mathbf{Z}_j)}{\|\mathbf{Z}_i
 
 <h2>Visualizing PCA Trajectories</h2>
 
-<p>To make this concrete, we can construct a 3D trajectory from PCA-reduced features. Each axis corresponds to a group of principal components, capturing the main directions of variance. The trajectory moves through this space as time progresses, showing how the speaker’s vocal behavior evolves from the beginning to the end of the utterance.</p>
+<p>To make this concrete, we can construct a 3D trajectory from PCA-reduced features. Each axis corresponds to a group of principal components, capturing the main directions of variance. The trajectory moves through this space as time progresses, showing the overall evolution of the dataset across frames. Note that because speaker identity is not tracked in this dataset, the trajectory represents a combined view of all speakers rather than an individual speaker.</p>
 
 <div class="figure">
-  <img src="pca_trajectory.png" alt="3D PCA Trajectory of Speaker">
-  <p>Figure: 3D PCA Trajectory showing how a speaker's vocal path evolves over time.</p>
+  <img src="pca_trajectory.png" alt="3D PCA Trajectory of Speakers">
+  <p>Figure: 3D PCA Trajectory showing how vocal features evolve over time. Color gradient from blue to red indicates the progression of time. This trajectory aggregates all speakers in the dataset since individual speaker IDs are not available.</p>
 </div>
 
 <p>By examining the trajectory, patterns of motion—curves, twists, and transitions—become visible, providing insight into temporal dynamics that are not captured by static representations.</p>
