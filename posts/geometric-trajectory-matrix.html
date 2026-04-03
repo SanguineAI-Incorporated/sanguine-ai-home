@@ -92,11 +92,17 @@ S(i,j) = \frac{\operatorname{Tr}(\mathbf{Z}_i^\top \mathbf{Z}_j)}{\|\mathbf{Z}_i
 
 <h2>Visualizing PCA Trajectories</h2>
 
-<p>To make this concrete, we can construct a 3D trajectory from PCA-reduced features. Each axis corresponds to a group of principal components, capturing the main directions of variance. The trajectory moves through this space as time progresses, showing the overall evolution of the dataset across frames. Note that because speaker identity is not tracked in this dataset, the trajectory represents a combined view of all speakers rather than an individual speaker.</p>
+<p>To make this idea more tangible, we can visualize a 3D trajectory of a single speaker’s voice. As time moves forward, the trajectory traces how the features change over the course of their speech.</p>
 
-<div class="figure">
-  <img src="../images/gmt_trajectory.png" alt="3D PCA Trajectory of Speakers">
-  <p>Figure: 3D PCA Trajectory showing how vocal features evolve over time. Color gradient from purple to yellow indicates the progression of time. This trajectory aggregates all speakers in the dataset since individual speaker IDs are not available.</p>
+<div class="figure" style="display: flex; gap: 1em; justify-content: center; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 250px; text-align: center;">
+    <img src="../images/gmt_trajectory.png" alt="GMT Trajectory of a Single Speaker">
+    <p>Figure: GMT trajectory of a single speaker showing how vocal features evolve over time. This figure represents the path without encoding temporal progression with color.</p>
+  </div>
+  <div style="flex: 1; min-width: 250px; text-align: center;">
+    <img src="../images/gmt_trajectory_time.png" alt="Trajectory Colored by Time">
+    <p>Figure: Trajectory colored by time to show the temporal progression of features along the vocal path. Early frames are purple, late frames are yellow.</p>
+  </div>
 </div>
 
 <p>By examining the trajectory, patterns of motion—curves, twists, and transitions—become visible, providing insight into temporal dynamics that are not captured by static representations.</p>
