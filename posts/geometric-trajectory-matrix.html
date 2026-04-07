@@ -36,7 +36,7 @@
 MFCCs, while historically central to audio representation, primarily encode short-window spectral features and discard higher-order temporal structure. We propose the geometric trajectory matrix, a representation that models speech as a trajectory through feature space, preserving sequential dynamics that may better support downstream inference of context and prediction of future utterances.
 </div>
 
-<p>At Sanguine, we’ve been developing a set of voice-driven capabilities for speaker verification and other identity-based tasks, inspired by audio intelligence systems such as Shazam.</p>
+<p>At Sanguine, we’ve been developing a set of voice features for speaker verification and other identity-based tasks, inspired by audio intelligence systems such as Shazam.</p>
 
 <p>Walk into any room and sound is everywhere, but machines rarely hear it the way we do. Voices, footsteps, even the hum of electronics—they carry patterns that can tell you who’s speaking, what’s happening, and when it matters. Our lab is using Geometric Trajectory Matrices to help machines make sense of these patterns in real time.</p>
 
@@ -99,7 +99,7 @@ S(i,j) = \frac{\operatorname{Tr}(\mathbf{Z}_i^\top \mathbf{Z}_j)}{\|\mathbf{Z}_i
 <div class="figure" style="display: flex; gap: 1em; justify-content: center; flex-wrap: wrap;">
   <div style="flex: 1; min-width: 250px; text-align: center;">
     <img src="../images/gmt_trajectory.png" alt="GMT Trajectory of a Single Speaker">
-    <p>Figure: GMT trajectory of a single speaker showing how vocal features evolve over time. This figure represents the path without encoding temporal progression with color.</p>
+    <p>Figure: GMT trajectory of a single speaker.</p>
   </div>
   <div style="flex: 1; min-width: 250px; text-align: center;">
     <img src="../images/gmt_trajectory_time2.png" alt="Trajectory Colored by Time">
