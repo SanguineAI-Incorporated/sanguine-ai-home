@@ -21,7 +21,6 @@
       background: var(--bg);
       color: var(--black);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
-
       min-height: 100vh;
     }
 
@@ -40,16 +39,12 @@
       top: 0;
       left: 0;
       right: 0;
-
       height: 64px;
-
       display: flex;
       justify-content: flex-end;
       align-items: center;
-
       padding: 0 28px;
       z-index: 10;
-
       opacity: 1;
       transition: opacity 0.35s ease, transform 0.35s ease;
     }
@@ -69,6 +64,7 @@
       opacity: 0.6;
       transition: opacity 0.15s ease;
       line-height: 1;
+      margin-left: 18px;
     }
 
     .top-nav a:hover {
@@ -199,6 +195,7 @@
 
   <!-- TOP NAV -->
   <div class="top-nav">
+    <a href="#posts">Posts</a>
     <a href="founders/founders.html">Founders</a>
   </div>
 
@@ -236,12 +233,10 @@
     <p>Our work enables humans and machines to sense, understand, and interact with the world safely and effectively.</p>
 
     <p>Our research focuses on teaching AI to notice subtle patterns in real voices — like tiny instabilities and natural rhythms that are hard to copy – even in noisy spaces.</p>
-
-
   </div>
 
   <!-- POSTS -->
-  <div class="posts-section">
+  <div class="posts-section" id="posts">
     <div class="posts-label">Posts</div>
 
     <div class="post-item">
