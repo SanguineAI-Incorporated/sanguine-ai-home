@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanguine</title>
+
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -12,12 +13,12 @@
     }
 
     :root {
-      --yellow: #C8D8E4; /* updated background */
+      --bg: #C8D8E4;
       --black: #000000;
     }
 
     html, body {
-      background: var(--yellow);
+      background: var(--bg);
       color: var(--black);
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       min-height: 100vh;
@@ -28,8 +29,49 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 64px 24px;
+      padding: 80px 24px 64px;
       min-height: 100vh;
+    }
+
+    /* ── Top Nav ── */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 64px;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      padding: 0 28px;
+      z-index: 10;
+
+      opacity: 1;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .top-nav.hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
+
+    .top-nav a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--black);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.15s ease;
+      line-height: 1;
+    }
+
+    .top-nav a:hover {
+      opacity: 1;
     }
 
     /* ── Logo ── */
@@ -74,37 +116,6 @@
 
     .bio p:last-child {
       margin-bottom: 0;
-    }
-
-    .bio .founders {
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      opacity: 0.6;
-      margin-top: 8px;
-    }
-
-    .bio .founders a {
-      color: var(--black);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      transition: opacity 0.15s ease;
-    }
-
-    .bio .founders a:hover {
-      opacity: 0.5;
-    }
-
-    /* ── Posts link ── */
-    .blog-link-wrap {
-      max-width: 520px;
-      width: 100%;
-      margin-top: 32px;
-      text-align: right;
-      opacity: 0;
-      animation: fadeUp 0.8s ease 0.55s forwards;
     }
 
     /* ── Posts section ── */
@@ -182,57 +193,79 @@
     }
   </style>
 </head>
+
 <body>
 
+  <!-- TOP NAV -->
+  <div class="top-nav">
+    <a href="founders/founders.html">Founders</a>
+  </div>
+
+  <!-- LOGO -->
   <div class="logo-wrap">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 260">
-      <!-- Background -->
       <rect width="600" height="260" fill="#C8D8E4"/>
-      <!-- Horizon line -->
       <line x1="100" y1="158" x2="500" y2="158" stroke="#000" stroke-width="2" stroke-linecap="round"/>
-      <!-- Sun semicircle -->
       <path d="M 230 158 A 70 70 0 0 1 370 158" fill="none" stroke="#000" stroke-width="2"/>
-      <!-- Sun rays -->
-      <line x1="300" y1="158" x2="300" y2="51"  stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="300" y1="158" x2="253" y2="57"  stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="300" y1="158" x2="347" y2="57"  stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="300" y1="158" x2="212" y2="79"  stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-      <line x1="300" y1="158" x2="388" y2="79"  stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="300" y1="158" x2="300" y2="51" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="300" y1="158" x2="253" y2="57" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="300" y1="158" x2="347" y2="57" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="300" y1="158" x2="212" y2="79" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="300" y1="158" x2="388" y2="79" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
       <line x1="300" y1="158" x2="178" y2="111" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
       <line x1="300" y1="158" x2="422" y2="111" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
       <line x1="300" y1="158" x2="155" y2="148" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
       <line x1="300" y1="158" x2="445" y2="148" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
-      <!-- Atmosphere arcs -->
       <path d="M 195 158 A 105 105 0 0 1 405 158" fill="none" stroke="#000" stroke-width="1" opacity="0.3"/>
-      <path d="M 158 158 A 142 142 0 0 1 442 158" fill="none" stroke="#000" stroke-width="0.8" opacity="0.18"/>
-      <!-- SANGUINE wordmark -->
-      <text x="300" y="218" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="48" font-weight="700" letter-spacing="10" text-anchor="middle" fill="#000">SANGUINE</text>
+      <path d="M 158 158 A 142 142 0 0 1 442 158" fill="none" stroke="#000" stroke-width="0.18"/>
+      <text x="300" y="218" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+            font-size="48" font-weight="700" letter-spacing="10"
+            text-anchor="middle" fill="#000">
+        SANGUINE
+      </text>
     </svg>
   </div>
 
   <div class="divider"></div>
 
+  <!-- BIO -->
   <div class="bio">
-    <p>Sanguine is an artificial intelligence company promoting safe and intelligent real-world interaction. We build robust, risk-driven models derived from audio and spatial data. </p>
+    <p>Sanguine is an artificial intelligence company promoting safe and intelligent real-world interaction. We build robust, risk-driven models derived from audio and spatial data.</p>
+
     <p>Our work enables humans and machines to sense, understand, and interact with the world safely and effectively.</p>
-    <p>Our research focuses on teaching AI to notice subtle patterns in real voices — like tiny instabilities and natural rhythms that are hard to copy – even in noisy spaces.</p>    
-    <p>We're a team of former Afterpay &amp; Cash App Risk ML experts based in San Francisco / Auckland.</p>
-    <p class="founders">Founders: <a href="https://www.linkedin.com/in/evanamoon/" target="_blank" rel="noopener">Evana Moon</a> &amp; <a href="https://github.com/bojan-nz">Bojan Janjic</a></p>
+
+    <p>Our research focuses on teaching AI to notice subtle patterns in real voices — like tiny instabilities and natural rhythms that are hard to copy – even in noisy spaces.</p>
+
+    <p>We're a team of former Afterpay & Cash App Risk ML experts based in San Francisco / Auckland.</p>
   </div>
 
-  <div class="blog-link-wrap">
-    <span>posts</span>
-  </div>
-
+  <!-- POSTS -->
   <div class="posts-section">
     <div class="posts-label">Posts</div>
+
     <div class="post-item">
-      <a class="post-title" href="/posts/geometric-trajectory-matrix" target="_blank">Geometric Trajectory Matrix for Voice Modeling</a>
+      <a class="post-title" href="/posts/geometric-trajectory-matrix" target="_blank">
+        Geometric Trajectory Matrix for Voice Modeling
+      </a>
       <span class="post-date">Apr 1, 2026</span>
     </div>
   </div>
 
+  <!-- FOOTER -->
   <div class="footer">© 2026 Sanguine</div>
+
+  <!-- NAV FADE -->
+  <script>
+    const nav = document.querySelector('.top-nav');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 80) {
+        nav.classList.add('hidden');
+      } else {
+        nav.classList.remove('hidden');
+      }
+    });
+  </script>
 
 </body>
 </html>
