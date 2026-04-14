@@ -15,6 +15,7 @@
     :root {
       --bg: #C8D8E4;
       --black: #000000;
+      --accent: #2EC7FF;
     }
 
     html, body {
@@ -22,6 +23,8 @@
       color: var(--black);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
@@ -33,7 +36,7 @@
       min-height: 100vh;
     }
 
-    /* ── Top Nav ── */
+    /* ── Top Nav (Apple glass style) ── */
     .top-nav {
       position: fixed;
       top: 0;
@@ -45,7 +48,12 @@
       align-items: center;
       padding: 0 28px;
       z-index: 10;
-      opacity: 1;
+
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+
       transition: opacity 0.35s ease, transform 0.35s ease;
     }
 
@@ -59,15 +67,16 @@
       font-size: 11px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--black);
+      color: rgba(0,0,0,0.65);
       text-decoration: none;
-      opacity: 0.6;
-      transition: opacity 0.15s ease;
       line-height: 1;
       margin-left: 18px;
+
+      transition: color 0.2s ease, opacity 0.2s ease;
     }
 
     .top-nav a:hover {
+      color: var(--accent);
       opacity: 1;
     }
 
@@ -84,11 +93,15 @@
       display: block;
     }
 
-    /* ── Divider ── */
+    /* soften logo toward Apple-like minimal contrast */
+    .logo-wrap svg text {
+      fill: rgba(0,0,0,0.85);
+    }
+
     .divider {
       width: min(400px, 70vw);
       height: 1px;
-      background: var(--black);
+      background: rgba(0,0,0,0.15);
       margin: 48px 0;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.25s forwards;
@@ -107,15 +120,11 @@
       line-height: 1.75;
       letter-spacing: 0.01em;
       font-weight: 400;
-      color: var(--black);
+      color: rgba(0,0,0,0.85);
       margin-bottom: 20px;
     }
 
-    .bio p:last-child {
-      margin-bottom: 0;
-    }
-
-    /* ── Posts section ── */
+    /* ── Posts ── */
     .posts-section {
       max-width: 520px;
       width: 100%;
@@ -129,7 +138,7 @@
       font-weight: 500;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      opacity: 0.4;
+      opacity: 0.45;
       margin-bottom: 20px;
     }
 
@@ -139,26 +148,24 @@
       align-items: baseline;
       gap: 16px;
       padding: 16px 0;
-      border-top: 1px solid rgba(0,0,0,0.15);
+      border-top: 1px solid rgba(0,0,0,0.10);
     }
 
     .post-item:last-child {
-      border-bottom: 1px solid rgba(0,0,0,0.15);
+      border-bottom: 1px solid rgba(0,0,0,0.10);
     }
 
     .post-title {
       font-size: 15px;
       font-weight: 400;
       line-height: 1.5;
-      color: var(--black);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      text-decoration-thickness: 1px;
-      transition: opacity 0.15s ease;
+      color: rgba(0,0,0,0.85);
+      text-decoration: none;
+      transition: color 0.2s ease;
     }
 
     .post-title:hover {
-      opacity: 0.5;
+      color: var(--accent);
     }
 
     .post-date {
@@ -166,7 +173,7 @@
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      opacity: 0.4;
+      opacity: 0.45;
       white-space: nowrap;
       flex-shrink: 0;
     }
@@ -180,6 +187,7 @@
       font-weight: 500;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.65s forwards;
+      color: rgba(0,0,0,0.6);
     }
 
     @keyframes fadeUp {
@@ -217,9 +225,13 @@
       <line x1="300" y1="158" x2="445" y2="148" stroke="#000" stroke-width="1.5" stroke-linecap="round"/>
       <path d="M 195 158 A 105 105 0 0 1 405 158" fill="none" stroke="#000" stroke-width="1" opacity="0.3"/>
       <path d="M 158 158 A 142 142 0 0 1 442 158" fill="none" stroke="#000" stroke-width="0.18"/>
-      <text x="300" y="218" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
-            font-size="48" font-weight="700" letter-spacing="10"
-            text-anchor="middle" fill="#000">
+      <text x="300" y="218"
+            font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+            font-size="48"
+            font-weight="700"
+            letter-spacing="10"
+            text-anchor="middle"
+            fill="#000">
         SANGUINE
       </text>
     </svg>
