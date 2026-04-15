@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Acoustic Inference — Sanguine</title>
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #C8D8E4;
+      --black: #000000;
+      --accent: #2EC7FF;
+    }
+
+    html {
+      background: var(--bg);
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--black);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 140px 24px 64px;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 80px 24px 64px;
+    }
+
+    /* NAV */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 28px;
+      z-index: 10;
+
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .top-nav a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.65);
+      text-decoration: none;
+      margin-left: 18px;
+    }
+
+    .top-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* TITLE */
+    .title {
+      max-width: 520px;
+      width: 100%;
+      margin-top: 120px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .title h1 {
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 12px;
+    }
+
+    .subtitle {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(0,0,0,0.7);
+    }
+
+    .formula {
+      margin-top: 16px;
+      font-family: monospace;
+      font-size: 13px;
+      color: rgba(0,0,0,0.75);
+    }
+
+    .divider {
+      width: min(400px, 70vw);
+      height: 1px;
+      background: rgba(0,0,0,0.15);
+      margin: 40px 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 520px;
+      width: 100%;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+
+    .content p {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(0,0,0,0.85);
+      margin-bottom: 18px;
+    }
+
+    .highlight {
+      font-weight: 500;
+    }
+
+    .footer {
+      margin-top: 64px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.6);
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.6s forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="top-nav">
+  <a href="../#posts">Posts</a>
+  <a href="../models/models.html">Models</a>
+  <a href="../founders/founders.html">Founders</a>
+</div>
+
+<div class="title">
+  <h1>Acoustic Inference</h1>
+  <div class="subtitle">Perception is belief, continuously updated.</div>
+  <div class="formula">P(world state | audio history)</div>
+</div>
+
+<div class="divider"></div>
+
+<div class="content">
+  <p>
+    Acoustic Inference is not classification and not transcription. It maintains a continuously updated posterior over latent world states, where each sound acts as evidence and each moment compounds context. From this, capabilities emerge naturally: detection of distress — mechanical, environmental, and human — before explicit recognition, inference of operator intent without rigid command structure, and temporal memory that persists across time. Intelligence, in this view, is the maintenance of uncertainty. To perceive is to update belief. To act is to commit under uncertainty. This framework enables robust interaction in robotics, safety-critical systems, and autonomous environments.
+  </p>
+</div>
+
+<div class="footer">© 2026 Sanguine</div>
+
+</body>
+</html>
