@@ -44,40 +44,55 @@
     margin-top: 96px;   /* pushes below nav */
     margin-bottom: 48px;
     }
+    
+    /* ── Top Nav (Apple glass style) ── */
     .top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  
-    display: flex;
-    justify-content: flex-end;
-    gap: 18px;
-  
-    padding: 18px 28px;
-  
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-  
-    background: rgba(200, 216, 228, 0.65);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-  
-    border-bottom: 1px solid rgba(0,0,0,0.08);
-  
-    z-index: 10;
-   }
-  
-  .top-nav a {
-    text-decoration: none;
-    color: rgba(0,0,0,0.65);
-    transition: color 0.2s ease;
-  }
-  
-  .top-nav a:hover {
-    color: var(--accent);
-  }
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+    
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    
+      padding: 0 28px;
+      z-index: 10;
+    
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+    
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    
+    .top-nav.hidden {
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
+    
+    .top-nav a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    
+      color: rgba(0,0,0,0.65);
+      text-decoration: none;
+      line-height: 1;
+    
+      margin-left: 18px;
+    
+      transition: color 0.2s ease, opacity 0.2s ease;
+    }
+    
+    .top-nav a:hover {
+      color: var(--accent);
+      opacity: 1;
+    }
     /* ── Hero ── */
     .kicker {
       font-size: 11px;
