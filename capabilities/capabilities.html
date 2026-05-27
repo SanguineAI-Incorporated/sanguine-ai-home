@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <p></p>
   <title>Proof of Control Runtime</title>
 
   <style>
@@ -41,6 +40,10 @@
       max-width: 560px;
       width: 100%;
       text-align: left;
+
+      /* balanced vertical breathing room */
+      margin-top: 48px;
+      margin-bottom: 48px;
     }
 
     /* ── Hero ── */
@@ -74,10 +77,22 @@
     /* ── CTA ── */
     .cta {
       display: flex;
-      gap: 14px;
+      gap: 12px;
+      align-items: center;
       margin-bottom: 64px;
       animation: fadeUp 0.8s ease 0.2s forwards;
       opacity: 0;
+    }
+
+    .input {
+      padding: 10px 12px;
+      border-radius: 6px;
+      border: 1px solid rgba(0,0,0,0.2);
+      background: transparent;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      outline: none;
+      width: 220px;
     }
 
     .btn {
@@ -98,11 +113,10 @@
       -webkit-backdrop-filter: blur(10px);
 
       transition: 0.2s ease;
+      cursor: pointer;
     }
 
     .btn.primary {
-      background: rgba(0,0,0,0);
-      color: var(--black);
       border: 1px solid rgba(0,0,0,0.85);
     }
 
@@ -132,7 +146,6 @@
       margin-bottom: 14px;
     }
 
-    /* Apple-style block rows */
     .block {
       padding: 14px 0;
     }
@@ -186,8 +199,13 @@
       A real-time control verification layer for AI systems in the physical world.
     </div>
 
+    <!-- CTA -->
     <div class="cta">
-      <a class="btn primary" href="#">Join Pilot Updates</a>
+      <input id="email" class="input" type="email" placeholder="Enter email" />
+
+      <button class="btn primary" id="joinBtn">
+        Join Pilot Updates
+      </button>
     </div>
 
     <!-- HOW IT WORKS -->
@@ -245,6 +263,43 @@
     </div>
 
   </div>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <script>
+    const supabaseUrl = "https://YOUR_PROJECT.supabase.co";
+    const supabaseKey = "YOUR_ANON_KEY";
+
+    const client = supabase.createClient(supabaseUrl, supabaseKey);
+
+    const btn = document.getElementById("joinBtn");
+
+    btn.addEventListener("click", async () => {
+      const email = document.getElementById("email").value;
+
+      if (!email) {
+        btn.innerText = "Enter email";
+        setTimeout(() => btn.innerText = "Join Pilot Updates", 1200);
+        return;
+      }
+
+      const { error } = await client
+        .from("pilot_signups")
+        .insert([{ email }]);
+
+      if (error) {
+        console.error(error);
+        btn.innerText = "Try again";
+        setTimeout(() => btn.innerText = "Join Pilot Updates", 1200);
+        return;
+      }
+
+      btn.innerText = "You're on the list";
+      btn.style.opacity = 0.6;
+      document.getElementById("email").value = "";
+    });
+  </script>
 
 </body>
 </html>
