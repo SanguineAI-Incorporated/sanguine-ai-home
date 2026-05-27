@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Team — Sanguine AI</title>
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #C8D8E4;
+      --black: #000000;
+      --accent: #2EC7FF;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--black);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 24px 64px;
+    }
+
+    /* ── Top Nav ── */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 64px;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 28px;
+      z-index: 10;
+
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(18px) saturate(180%);
+      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .top-nav a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.65);
+      text-decoration: none;
+      margin-left: 18px;
+      transition: color 0.2s ease;
+    }
+
+    .top-nav a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Title ── */
+    .title {
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    /* ── Divider ── */
+    .divider {
+      width: min(400px, 70vw);
+      height: 1px;
+      background: rgba(0,0,0,0.15);
+      margin-bottom: 48px;
+
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    /* ── Team ── */
+    .team {
+      max-width: 520px;
+      width: 100%;
+
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.35s forwards;
+    }
+
+    .team-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.45;
+      margin-bottom: 20px;
+    }
+
+    .member {
+      padding: 16px 0;
+      border-top: 1px solid rgba(0,0,0,0.10);
+    }
+
+    .member:last-child {
+      border-bottom: 1px solid rgba(0,0,0,0.10);
+    }
+
+    .member a {
+      font-size: 15px;
+      color: rgba(0,0,0,0.85);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .member a:hover {
+      color: var(--accent);
+    }
+
+    /* ── Animation ── */
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <div class="top-nav">
+    <a href="index.html">Home</a>
+    <a href="index.html#posts">Posts</a>
+  </div>
+
+
+  <!-- TEAM LIST -->
+  <div class="team">
+    <div class="team-label">Team Members</div>
+
+    <div class="member">
+      <a href="https://github.com/e-n-moon" target="_blank" rel="noopener noreferrer">
+        Evana Moon
+      </a>
+    </div>
+
+    <div class="member">
+      <a href="https://github.com/bojan-nz" target="_blank" rel="noopener noreferrer">
+        Bojan Janjic
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>
