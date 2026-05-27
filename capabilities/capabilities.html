@@ -3,68 +3,169 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Capabilities — Sanguine</title>
+  <p></p>
+  <title>Proof of Control Runtime</title>
 
   <style>
-    :root {
-      --bg: #C8D8E4;
-      --black: #000;
-    }
-
-    * {
+    *, *::before, *::after {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
 
-    body {
+    :root {
+      --bg: #C8D8E4;
+      --black: #000000;
+      --accent: #2EC7FF;
+    }
+
+    html, body {
       background: var(--bg);
       color: var(--black);
       font-family: Inter, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif;
       min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 40px;
-      text-align: center;
+      padding: 80px 24px 64px;
+      min-height: 100vh;
     }
 
     .wrap {
       max-width: 560px;
-      opacity: 0;
-      transform: translateY(12px);
+      width: 100%;
+      text-align: left;
+    }
+
+    /* ── Hero ── */
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 18px;
       animation: fadeUp 0.8s ease forwards;
     }
 
-    .tagline {
-      font-size: 14px;
-      line-height: 1.6;
+    h1 {
+      font-size: 44px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
       margin-bottom: 18px;
-      opacity: 0.8;
+      animation: fadeUp 0.8s ease forwards;
     }
 
-    p {
+    .sub {
       font-size: 16px;
-      line-height: 1.6;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      color: rgba(0,0,0,0.75);
+      margin-bottom: 36px;
+      animation: fadeUp 0.8s ease 0.1s forwards;
+      opacity: 0;
     }
 
-    a {
-      font-size: 12px;
-      letter-spacing: 0.12em;
+    /* ── CTA ── */
+    .cta {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 64px;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+      opacity: 0;
+    }
+
+    .btn {
+      font-size: 11px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
-      text-decoration: underline;
-      text-underline-offset: 3px;
-      color: var(--black);
-      opacity: 0.7;
-      transition: opacity 0.15s ease;
+      text-decoration: none;
+
+      padding: 10px 12px;
+      border-radius: 6px;
+
+      border: 1px solid rgba(0,0,0,0.18);
+      background: transparent;
+
+      color: #000000;
+
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+
+      transition: 0.2s ease;
     }
 
-    a:hover {
-      opacity: 1;
+    .btn.primary {
+      background: rgba(0,0,0,0);
+      color: var(--black);
+      border: 1px solid rgba(0,0,0,0.85);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn.primary:hover {
+      background: var(--accent);
+      color: var(--black);
+    }
+
+    /* ── Sections ── */
+    .section {
+      margin-top: 56px;
+      animation: fadeUp 0.8s ease forwards;
+      opacity: 0;
+    }
+
+    .section h2 {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 14px;
+    }
+
+    /* Apple-style block rows */
+    .block {
+      padding: 14px 0;
+    }
+
+    .label {
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+
+    .text {
+      font-size: 15px;
+      line-height: 1.6;
+      color: rgba(0,0,0,0.75);
+      margin-top: 6px;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 64px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      animation: fadeUp 0.8s ease 0.3s forwards;
     }
 
     @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
       to {
         opacity: 1;
         transform: translateY(0);
@@ -76,15 +177,73 @@
 <body>
 
   <div class="wrap">
-    <div class="tagline">
-      Face ID for machines that see the world, not your data.
+
+    <div class="kicker">Continuous identity and control for autonomous systems.</div>
+
+    <h1>Proof of Control Runtime</h1>
+
+    <div class="sub">
+      A real-time control verification layer for AI systems in the physical world.
     </div>
 
-    <p>stay tuned -- follow us on linkedin.</p>
+    <div class="cta">
+      <a class="btn primary" href="#">Join Pilot Updates</a>
+    </div>
 
-    <a href="https://www.linkedin.com/company/sanguine-ai/" target="_blank" rel="noopener">
-      linkedin
-    </a>
+    <!-- HOW IT WORKS -->
+    <div class="section">
+      <h2>How it works</h2>
+
+      <div class="block">
+        <div class="label">Identity</div>
+        <div class="text">Each AI agent has a secure digital identity.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Logging</div>
+        <div class="text">Every action is recorded as it happens.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Monitoring</div>
+        <div class="text">We check behavior in real time for anything unusual.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Oversight</div>
+        <div class="text">A human can be added for important actions.</div>
+      </div>
+    </div>
+
+    <!-- USE CASES -->
+    <div class="section">
+      <h2>Use cases</h2>
+
+      <div class="block">
+        <div class="label">Autonomous agents</div>
+        <div class="text">Systems that take actions across tools, APIs, and workflows.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Healthcare robotics</div>
+        <div class="text">Safety-critical systems operating in clinical environments.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Voice AI</div>
+        <div class="text">Real-time conversational systems with action execution.</div>
+      </div>
+
+      <div class="block">
+        <div class="label">Regulated automation</div>
+        <div class="text">Finance, healthcare, and infrastructure systems requiring auditability.</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      We make AI systems auditable in reality, not just in benchmarks.
+    </div>
+
   </div>
 
 </body>
